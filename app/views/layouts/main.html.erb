@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Simple BLOG <%= "; {@page_title}" if @page_title %></title>
+  <meta name="author" content="Kevin Skoglund">
+  <meta name="copyright" content="Copyright 2007 - Pixel Press Inc.">
+  <meta name="keywords" content="Simple, Blog" >
+  <meta name="version" content="1.0" >
+  <meta name="description" content="This is a simple blog developed in Ruby on Rails" >
+  <meta name="revisit-after" content="2 days" >
+  <meta name="robots" content="follow,index" >
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <%= stylesheet_link_tag('sblog', 'main', :media => 'all') %>
+</head>
+<body class="public">
+<div id="header">
+  <h1><% link_to('Simple Blog', '/', :style => 'text-decoration: none; color: #FFFFFF;') %></h1>
+</div>
+<div id="pagecontent">
+  <h1><% @page_title %></h1>
+  <% if !flash[:notice].blank? %>
+      <div class="notice">
+        <%= flash[:notice] %>
+      </div>
+  <% end %>
+  <%= yield %>
+</div>
+<div id="footer">
+  <p id="copyright">&copy; Copyright 2007 - Pixel Press / Kevin Skoglund</p>
+</div>
+</body>
+</html>
